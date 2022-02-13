@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto topnav">
                   <li class="nav-item ml-4 active">
-                      <router-link  class="nav-link" to="/Home"><b>หน้าหลัก</b><span class="sr-only"></span></router-link>
+                      <router-link  class="nav-link" to="/"><b>หน้าหลัก</b><span class="sr-only"></span></router-link>
                   </li>
                   <li class="nav-item ml-4 active">
                       <router-link class="nav-link" to="/Product"><b>สินค้า</b></router-link>
@@ -30,6 +30,28 @@
           </div>
 
         </div>
+
+        <!-- <div class="card-body">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title font-weight-bolder" id="staticBackdropLabel">I-CHI BOBA </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body ">
+                      ขอบคุณสำหรับการสมัครเฟรนไชส์ I-CHI BOBA โดยท่านจะได้รับการตอบกลับทางข้อมูลที่ท่านได้ระบุไว้
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div> -->
 
 
       </nav>

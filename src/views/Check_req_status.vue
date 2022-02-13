@@ -2,13 +2,14 @@
     <div id="Detail_area">
       <div class="container-fluid mb-5">
           <img
-        src="@/assets/image/Logo_noBG.png"
+        :src="image"
         class="logo-mt"
         height="120px"
         width="120px"/>
         <h3><b>ตรวจสอบสถานะคำขอ</b></h3>
         <div class="text-center">
-            <input class="search-id" type="search" name="search-id" id="search-id" placeholder="กรอกเลขบัตรประชาชนเพื่อตรวจสอบ">
+            <input class="search-id" v-model="check_num" type="search" name="search-id" id="search-id" placeholder="กรอกเลขบัตรประชาชนเพื่อตรวจสอบ">
+            
             <div class="mt-5">
                 <button type="button" class="btn btn-primary btn-md">ตรวจสอบ <i class="fas fa-search"></i></button>
             </div>
@@ -20,11 +21,17 @@
 
 
 <script>
+import image from '@/assets/image/Logo_noBG.png';
 
 export default {
   name:'Detail_area',
-  
-  
+  data() {
+    return {
+      image : image,
+      check_num:'',
+      check_name:'',
+    }
+  },
 }  
 </script>
 

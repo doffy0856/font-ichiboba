@@ -17,6 +17,8 @@
                         </div>
                     </form> 
                     <button @click="login()" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                     <a  href="/" class="btn btn-danger mt-2"><i class="far fa-arrow-alt-circle-left"></i> กลับ </a>
+
 
                     
                 </div>

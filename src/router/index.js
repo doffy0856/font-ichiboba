@@ -15,16 +15,16 @@ import Confirm from '../components/layouts/Confirm.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
   {
-    path: '/Home',
+    path: '/',
     name: 'Home',
     component: Home
   },
+  // {
+  //   path: '/Home',
+  //   name: 'Home',
+  //   component: Home
+  // },
   {
     path: '/Product',
     name: 'Product',

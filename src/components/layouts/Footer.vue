@@ -74,9 +74,9 @@ export default {
 .font-famil{
   font-family: 'Roboto Mono', monospace;
 }
-.f-left{
+/* .f-left{
     text-align: left;
-}
+} */
 
 
 .site-footer{
