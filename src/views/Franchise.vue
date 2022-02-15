@@ -78,7 +78,8 @@
                   name="num_id"
                   id="num_id"
                   placeholder="เลขบัตรประชาชน"
-                  :maxlength="nummax"
+                  maxlength="13"
+                  minlength="13"
                   v-model="person_info.num_id" required/>
               </div>
             </div>
@@ -99,18 +100,20 @@
               <div class="col-sm-12 col-md-6 col-lg-3">
                 <p><b>ช่องทางการติดต่อ</b><span>*</span></p>
                 <input
-                  type="number"
+                  type="text"
                   name="num_phone"
                   id="num_phone"
+                  maxlength="10"
                   placeholder="โทรศัพท์มือถือ"
                   v-model="person_info.num_phone" required/>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-3">
                 <p>โทรศัพท์บ้าน:</p>
                 <input
-                  type="number"
+                  type="text"
                   name="num_phone_home"
                   id="num_phone_home"
+                  maxlength="10"
                   placeholder="โทรศัพท์บ้าน"
                   v-model="person_info.num_phone_home"
                 />
@@ -184,7 +187,7 @@
 
 <script>
 import "vue-select/dist/vue-select.css";
-//  import axios from "axios";
+ import axios from "axios";
 import image from '@/assets/image/Logo_noBG.png';
 
 export default {
@@ -193,7 +196,6 @@ export default {
   data() {
     return {
       image : image,
-      nummax: 13,
       // notRequired: false,
       prefix: ["นาย" , "นาง" ,"นางสาว" ],
       person_info: {
@@ -214,6 +216,23 @@ export default {
   },
 
   mounted() {
+
+    let newData = []
+    axios.get("http://localhost:3001/person-info/all")
+    .then((response) => {
+      let res = response.data
+      if(response.data){
+        res.data.forEach(element => {
+          // console.log('res', element.num_id)
+          newData.push(element.num_id)
+        });
+        //   console.log('reponae',response.data[i])
+        // console.log('reponae',response.data)        
+      }
+    })
+    this.numID = newData
+    // console.log('num id', this.numID)    
+
     let person_info = JSON.parse(localStorage.getItem("page1"))
     if (person_info == null) {
       console.log('Null')
@@ -232,20 +251,38 @@ export default {
         this.person_info.experience_detail = person_info.experience_detail
     }
 },
- 
+
   methods: {
     submitPerson() {
-      if(this.person_info == ""){
-        alert("กรุณากรอกข้อมูลให้ครบถ้วน")
+      if(this.person_info.name == ""){
+        this.$alert(null,"กรุณากรอกข้อมูลให้ครบถ้วน","error");
+        localStorage.removeItem('page1');
+
+         window.location = "/Franchise"
+         
       }
-      else {
-        this.$router.push({
-        name: "Detail_area", //use name for router push
-        params: { data_page1: this.person_info },
+      if (this.numID.includes(this.person_info.num_id) === true) {
+        this.$alert("เลขบัตรนี้ได้ทำการยื่นคำร้องแล้ว",this.person_info.num_id,"warning");
+         window.location = "/Franchise"
+      } else {
+          this.$router.push({
+          name: "Detail_area", //use name for router push
+          params: { data_page1: this.person_info },
       });
-      console.log("person");
-      localStorage.setItem("page1", JSON.stringify(this.person_info));
+          localStorage.setItem("page1", JSON.stringify(this.person_info));
       }
+      
+       // if(this.person_info.name == ""){
+      //   this.$alert(null,"กรุณากรอกข้อมูลให้ครบถ้วน","error",3000);
+      // }
+      // else {
+      //   this.$router.push({
+      //   name: "Detail_area", //use name for router push
+      //   params: { data_page1: this.person_info },
+      // });
+      // console.log("person");
+      // localStorage.setItem("page1", JSON.stringify(this.person_info));
+      // }
       // this.$router.push({
       //   name: "Detail_area", //use name for router push
       //   params: { data_page1: this.person_info },
@@ -253,6 +290,8 @@ export default {
       // // console.log("person",this.person_info.create_date);
       // localStorage.setItem("page1", JSON.stringify(this.person_info));
     },
+    
+    
 
   },
 };

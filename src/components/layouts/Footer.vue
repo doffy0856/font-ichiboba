@@ -3,7 +3,7 @@
     <div class="site-footer ps">
       <div class="container">
         <div class="row font-famil">
-          <div class="col-sm-8 col-md-4 " >
+          <div class="col-sm-12 col-md-6 col-lg-6  col-xs-12" >
             <h5>Admin</h5>
             <!-- <p class="text-justify ">xxx</p> -->
             <ul class="footer-links admin-center">
@@ -11,26 +11,25 @@
                 <li><p class="text-p">*เฉพาะเจ้าของแฟรนไชส์*</p></li>
             </ul>
           </div>
-          <div class="col-sm-8 col-md-4 ">
+          <!-- <div class="col-sm-8 col-md-4 ">
             <h5>ยื่นคำร้องแฟรนไชส์</h5>
             <ul class="footer-links f-left">
                 <li class="nav-item ml-4 active">
-                    <router-link  class="footer-link" to="">แฟรนไชส์</router-link>
+                    <router-link  class="footer-link" to="/Provision">แฟรนไชส์</router-link>
                 </li> <br>
                 <li class="nav-item ml-4 active">
-                    <router-link  class="footer-link" to="">ตรวจสอบสถานะคำขอ</router-link>
+                    <router-link  class="footer-link" to="/Check_req_status">ตรวจสอบสถานะคำขอ</router-link>
                 </li>
             </ul>
-          </div>
-          <div class="col-sm-8 col-md-4">
+          </div> -->
+          <div class="col-sm-12 col-md-6 col-lg-6  col-xs-12">
             <h5>ติดต่อ</h5>
-            <ul class="footer-links f-left" >
-               <li><a href="https://www.facebook.com/ichiboba/"> <i class="fab fa-facebook"></i> Facebook</a></li> <br>
-               <li><p style="font-size:15px;">โทร : 062-196-6446</p></li> 
-               <li><p style="font-size:15px;">Email : anusorn.krth@gmail.com</p></li> 
+            <ul class="footer-links text-left pl-5" >
+               <li><a href="https://www.facebook.com/ichiboba/"> <i class="fab fa-facebook"></i> Facebook</a> </li> <br>
+               <li> <small><p style="padding-top:8px;">โทร: 099-847-0878</p></small></li>
+               <li><small> <p>Email : anusorn.krth@gmail.com</p></small></li> 
             </ul>
           </div>
-
         </div> <!--   Row -->
 
     <hr>
@@ -44,15 +43,6 @@
          <a href="#">I-CHI BOBA</a>.
             </p>
           </div>
-
-          <!-- <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-              <li><a class="line" href="#"><i class="fab fa-line"></i></a></li>
-            </ul>
-          </div> -->
         </div>
       </div>
     </div>
@@ -62,7 +52,6 @@
 <script>
 export default {
   nameL: "Footer",
-
 
 };
 </script>
@@ -74,14 +63,9 @@ export default {
 .font-famil{
   font-family: 'Roboto Mono', monospace;
 }
-/* .f-left{
-    text-align: left;
-} */
-
-
 .site-footer{
   position: absolute;
-  padding: 20px;
+  padding: 15px;
   /* margin-top: 1px; */
   top: 0;
   left: 0;
@@ -89,7 +73,7 @@ export default {
   width: 100%;
   background-color: #e5b934;
   color: white;
-  line-height: 12px;
+  line-height: 7px;
   /* text-align: center; */
 }
 .ps {
@@ -103,7 +87,8 @@ export default {
 
 
 
-/* --------------Test--------------------- */
+
+/* --------------footer--------------------- */
 
 .site-footer hr
 {
@@ -179,96 +164,24 @@ export default {
   margin:0;
   text-align: center;
 }
-@media (max-width:991px)
+/* @media (max-width:991px)
 {
   .site-footer [class^=col-]
   {
     margin-bottom:88px;
     padding-bottom:0;
   }
-}
+} */
 @media (max-width:767px)
 {
-  .site-footer 
+  /* .site-footer 
   {
     padding-bottom:0;
-  }
+  } */
   .site-footer .copyright-text,.site-footer .social-icons
   {
-    text-align:center;
     font-size: 12px;
   }
 }
-/* .social-icons
-{
-  padding-left:0;
-  margin-bottom:0;
-  list-style:none
-}
-.social-icons li
-{
-  display:inline-block;
-  margin-bottom:4px
-}
-.social-icons li.title
-{
-  margin-right:15px;
-  text-transform:uppercase;
-  color:#96a2b2;
-  font-weight:700;
-  font-size:13px
-}
-.social-icons a{
-  background-color:#eceeef;
-  color:#818a91;
-  font-size:16px;
-  display:inline-block;
-  line-height:44px;
-  width:44px;
-  height:44px;
-  text-align:center;
-  margin-right:8px;
-  border-radius:100%;
-  -webkit-transition:all .2s linear;
-  -o-transition:all .2s linear;
-  transition:all .2s linear
-}
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover
-{
-  color:#fff;
-  background-color:#29aafe
-}
-.social-icons.size-sm a
-{
-  line-height:34px;
-  height:34px;
-  width:34px;
-  font-size:14px
-}
-.social-icons a.facebook:hover
-{
-  background-color:#3b5998
-}
-.social-icons a.twitter:hover
-{
-  background-color:#00aced
-}
-.social-icons a.line:hover
-{
-  background-color:#13e304
-}
-.social-icons a.instagram:hover
-{
-  background-color:#ff054c
-}
-@media (max-width:767px)
-{
-  .social-icons li.title
-  {
-    display:block;
-    margin-right:0;
-    font-weight:600
-  }
-} */
 
 </style>

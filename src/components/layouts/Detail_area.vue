@@ -10,8 +10,6 @@
        
         <div class="card text-center mt-4">
             <div class="card-header">
-             
-
                 <ul class="nav nav-tabs card-header-tabs row">
                   <div class="col-sm-4">
                     <li class="nav-item no-drop">
@@ -40,7 +38,7 @@
               <div class="col-sm-12  col-md-8 col-lg-4  mar-top">
                 <input type="text" name="home_group" id="home_group" placeholder="หมู่" v-model="area_details.home_group">
               </div>
-               <div class="col-sm-12  col-md-8 col-lg-4   mar-top">
+               <div class="col-sm-12  col-md-8 col-lg-4 mar-top">
                 <input type="text" name="home_build" id="home_build" placeholder="อาคาร" v-model="area_details.home_build">
               </div>
             </div>
@@ -147,48 +145,40 @@
               <div class="col-sm-6 col-md-6 col-lg-12">
                 <p><b>สถานที่โดยรอบมีอะไรบ้าง(สามารถเลือกได้มากกว่า 1 ข้อ)</b><span>*</span></p>
 
-                  <input type="checkbox"  name="local_mall" id="local_mall" v-model="area_details.local_mall.mall "> 
-                    <label><p>ห้างสรรพสินค้า</p></label>  
+                  <input type="radio" value="ห้างสรรพสินค้า" name="local_mall" id="local_mall" v-model="area_details.local_mall.mall "> <label><p>ห้างสรรพสินค้า</p></label>  
                     <input type="text" class="input-right " name="text_local_mall" id="text_local_mall" placeholder="โปรดระบุ" 
-                      v-model="area_details.local_mall.mall_detail" :disabled="area_details.local_mall.mall != true ">  <br>
+                      v-model="area_details.local_mall.mall_detail" :disabled="area_details.local_mall.mall != 'ห้างสรรพสินค้า' ">  <br>
 
-                  <input type="checkbox" name="local_tea" id="local_tea" v-model="area_details.local_tea.tea"> 
-                    <label><p>ร้านชานมยี่ห้ออื่น</p> </label> 
+                  <input type="radio" value="ร้านชานมยี่ห้ออื่น" name="local_tea" id="local_tea" v-model="area_details.local_tea.tea"> <label><p>ร้านชานมยี่ห้ออื่น</p> </label> 
                     <input type="text" class="input-right" name="text_local_tea" id="text_local_tea" placeholder="โปรดระบุ" 
-                    v-model="area_details.local_tea.tea_detail" :disabled="area_details.local_tea.tea != true "><br>
+                    v-model="area_details.local_tea.tea_detail" :disabled="area_details.local_tea.tea != 'ร้านชานมยี่ห้ออื่น' "><br>
 
-                  <input type="checkbox" name="local_office" id="local_office" v-model="area_details.local_office.office"> 
-                    <label><p>สำนักงาน</p> </label>  
+                  <input type="radio" value="สำนักงาน" name="local_office" id="local_office" v-model="area_details.local_office.office"> <label><p>สำนักงาน</p> </label>  
                     <input type="text" class="input-right" name="text_local_office" id="text_local_office" placeholder="โปรดระบุ" 
-                    v-model="area_details.local_office.office_detail" :disabled="area_details.local_office.office != true "> <br>
+                    v-model="area_details.local_office.office_detail" :disabled="area_details.local_office.office != 'สำนักงาน' "> <br>
 
-                  <input type="checkbox" name="local_accom" id="local_accom" v-model="area_details.local_accom.accom"> 
-                    <label><p>คอนโด อพาร์ทเม้นท์ หรือที่พักอาศัยอื่นๆ</p> </label> 
+                  <input type="radio" value="คอนโด อพาร์ทเม้นท์ หรือที่พักอาศัยอื่นๆ" name="local_accom" id="local_accom" v-model="area_details.local_accom.accom"> <label><p>คอนโด อพาร์ทเม้นท์ หรือที่พักอาศัยอื่นๆ</p> </label> 
                     <input type="text" class="input-right" name="text_local_accom" id="text_local_accom" placeholder="โปรดระบุ" 
-                    v-model="area_details.local_accom.accom_detail" :disabled="area_details.local_accom.accom != true "><br>
+                    v-model="area_details.local_accom.accom_detail" :disabled="area_details.local_accom.accom != 'คอนโด อพาร์ทเม้นท์ หรือที่พักอาศัยอื่นๆ' "><br>
 
-                  <input type="checkbox"  name="local_study" id="local_study" v-model="area_details.local_study.study"> 
-                    <label><p>สถานศึกษา เช่น โรงเรียน มหาวิทยาลัย</p> </label> 
+                  <input type="radio" value="สถานศึกษา"  name="local_study" id="local_study" v-model="area_details.local_study.study"> <label><p>สถานศึกษา เช่น โรงเรียน มหาวิทยาลัย</p> </label> 
                     <input type="text" class="input-right" name="text_local_study" id="text_local_study" placeholder="โปรดระบุ" 
-                    v-model="area_details.local_study.study_detail" :disabled="area_details.local_study.study != true ">  <br>
+                    v-model="area_details.local_study.study_detail" :disabled="area_details.local_study.study != 'สถานศึกษา' ">  <br>
 
-                  <input type="checkbox"  name="local_gas" id="local_gas" v-model="area_details.local_gas.gas"> 
-                    <label><p>สถานีนำมัน</p> </label> 
+                  <input type="radio"  value="สถานีนำมัน" name="local_gas" id="local_gas" v-model="area_details.local_gas.gas"> <label><p>สถานีนำมัน</p> </label> 
                   <input type="text" class="input-right" name="text_local_gas" id="text_local_gas" placeholder="โปรดระบุ"
-                    v-model="area_details.local_gas.gas_detail" :disabled="area_details.local_gas.gas != true "><br>
+                    v-model="area_details.local_gas.gas_detail" :disabled="area_details.local_gas.gas != 'สถานีนำมัน' "><br>
 
-                  <input type="checkbox"  name="local_community" id="local_community" v-model="area_details.local_community.community"> 
-                    <label><p>ชุมชนหรือตลาด</p> </label> 
+                  <input type="radio"  value="ชุมชนหรือตลาด" name="local_community" id="local_community" v-model="area_details.local_community.community"> <label><p>ชุมชนหรือตลาด</p> </label> 
                     <input type="text" class="input-right" name="text_local_community" id="text_local_community" placeholder="โปรดระบุ"
-                     v-model="area_details.local_community.community_detail" :disabled="area_details.local_community.community != true "><br>
+                     v-model="area_details.local_community.community_detail" :disabled="area_details.local_community.community != 'ชุมชนหรือตลาด' "><br>
 
-                  <input type="checkbox" name="local_other" id="local_other" v-model="area_details.local_other.other"> 
-                    <label><p>อื่นๆ</p> </label> 
+                  <input type="radio" value="อื่นๆ" name="local_other" id="local_other" v-model="area_details.local_other.other"> <label><p>อื่นๆ</p> </label> 
                     <input type="text" class="input-right" name="text_local_other" id="text_local_other" placeholder="โปรดระบุ" 
-                     v-model="area_details.local_other.other_detail" :disabled="area_details.local_other.other != true ">  <br>
+                     v-model="area_details.local_other.other_detail" :disabled="area_details.local_other.other != 'อื่นๆ' ">  <br>
                   
                   <p class="mt-4">โปรดระบุเหตุผลในการสมัครทำธุรกิจแฟรนไชส์ร้าน I-CHI BOBA</p> 
-                  <textarea name="reason_detail" id="reason_detail" rows="3" cols="40" v-model="area_details.raeson_detail"> </textarea>
+                  <textarea name="raeson_detail" id="raeson_detail" rows="3" cols="40" v-model="area_details.raeson_detail"> </textarea>
               </div>
             </div>            
             <!-- สถานที่โดยรอบมีอะไรบ้าง -->  <hr>
@@ -273,14 +263,14 @@ export default {
         parking:"", 
         raeson_detail:"",
 
-        local_mall: {mall:false , mall_detail:"" },
-        local_tea:{tea:false , tea_detail:""},
-        local_office:{office:false, office_detail:""},
-        local_accom:{accom:false, accom_detail:""},
-        local_study:{study:false,study_detail:"" },
-        local_gas:{gas:false, gas_detail:""},
-        local_community:{community:false, community_detail:""},
-        local_other:{other:false, other_detail:""},
+        local_mall: {mall:null , mall_detail:"" },
+        local_tea:{tea:null , tea_detail:""},
+        local_office:{office:null, office_detail:""},
+        local_accom:{accom:null, accom_detail:""},
+        local_study:{study:null,study_detail:"" },
+        local_gas:{gas:null, gas_detail:""},
+        local_community:{community:null, community_detail:""},
+        local_other:{other:null, other_detail:""},
 
         // text_local_mall:"",
         // text_local_tea:"",
@@ -391,7 +381,7 @@ export default {
         params: { data_page2: this.area_details, data_page1: this.person_data },
       });
       localStorage.setItem("page2", JSON.stringify(this.area_details));
-   
+      window.location.reload(2000)
     }
   },
 

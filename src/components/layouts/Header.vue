@@ -16,10 +16,10 @@
                       <router-link class="nav-link" to="/Product"><b>สินค้า</b></router-link>
                   </li>
                     <li class="nav-item ml-4 active">
-                      <router-link class="nav-link" to=""><b>ข่าวสาร</b></router-link>
+                      <router-link class="nav-link" to="/Messege_info"><b>ข่าวสาร</b></router-link>
                   </li>
                   <li class="nav-item ml-4 active">
-                      <router-link  class="nav-link" to="/Franchise"><b>แฟรนไชส์</b></router-link>
+                      <router-link  class="nav-link" to="/Provision"><b>แฟรนไชส์</b></router-link>
                   </li>
                   <li class="nav-item ml-4 active">
                       <router-link  class="nav-link" to="/Check_req_status"><b>ตรวจสอบสถานะคำขอ</b></router-link>

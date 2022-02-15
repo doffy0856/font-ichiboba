@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Product from '../views/Product.vue'
+import Messege_info from '../views/Messege_info.vue'
+import Provision from '../views/Provision.vue'
 import Franchise from '../views/Franchise.vue'
 import Check_req_status from '../views/Check_req_status.vue'
 import LoginAdmin from '../views/LoginAdmin.vue'
@@ -29,6 +31,16 @@ const routes = [
     path: '/Product',
     name: 'Product',
     component: Product
+  },
+  {
+    path: '/Provision',
+    name: 'Provision',
+    component: Provision
+  },
+  {
+    path: '/Messege_info',
+    name: 'Messege_info',
+    component: Messege_info
   },
   {
     path: '/Franchise',

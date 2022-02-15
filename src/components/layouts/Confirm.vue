@@ -1,7 +1,7 @@
 <template>
   <div id="Confirm">
       <div class="container mb-5">
-          <img
+      <img
         src="@/assets/image/Logo_noBG.png"
         class="logo-mt"
         height="120px"
@@ -9,7 +9,7 @@
         <h3><b>แฟรนไชส์</b></h3>
        
         <div class="card text-center mt-4">
-            <div class="card-header">
+          <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs row">
                   <div class="col-sm-4">
                     <li class="nav-item">
@@ -33,31 +33,76 @@
           <div class="card-body">
                <div class="p-5">
                   <div class="card">
-                    <div class="card-header"> รายละเอียดผู้ยื่นคำร้อง</div>
+                    <div class="card-header"><b>รายละเอียดผู้ยื่นคำร้องทั้งหมด</b></div>
                     <div class="row m-4" >
-                        <div class="col-sm-12 col-md-12 col-lg-12" >
+                        <div class="col-sm-12 col-md-12 col-lg-12 ">
                           <ul style="list-style-type:none;">
-                            <li class="mt-3"><h5>{{person.name}}</h5></li>
-                            <li class="mt-4"><h5>{{person.create_date}}</h5></li>
+                            <li class="mt-4"><b>วันที่ยื่นคำร้อง:</b> {{person.create_date}}</li>
+                            <li class="mt-3"><b>ชื่อ-นามสกุล:</b> {{person.name}} {{person.lastname}}</li>
+                            <li class="mt-3"><b>เลขบัตรประชาชน:</b> {{person.num_id}} </li>
+                            <!-- IMAGE_CARD  -->
+                            <li class="mt-3"><b>เบอร์มือถือ:</b> {{person.num_phone}}  </li>
+                            <li class="mt-3"><b>เบอร์โทรศัพท์บ้าน:</b> {{person.num_phone_home}}  </li>
+                            <li class="mt-3"><b>แฟกร์:</b> {{person.fax}}  </li>
+                            <li class="mt-3"><b>อีเมล:</b> {{person.email}}  </li>
+                            <li class="mt-3"><b>เคยมีประสบการณ์หรือไม่:</b>  {{person.experience}}  </li>
+                            <li class="mt-3"><b>รายละเอียด:</b> {{person.experience_detail}}  </li>
                           </ul>
                         </div>
-                        <!-- <div class="col-sm-6 " >
+                         <div class="col-sm-12 col-md-12 col-lg-12 text-center" >
                             <ul style="list-style-type:none;">
-                              <li>xxxxx</li>
+                              <li class="mt-3"><b>จังหวัด:</b> {{details.province}}</li>
+                              <li class="mt-3"><b>อำเภอ:</b> {{details.district}}</li>
+                              <li class="mt-3"><b>ตำบล:</b> {{details.sup_district}}</li>
+                              <li class="mt-3"><b>รหัสไปรษณีย์:</b> {{details.zipecode}}</li>
+                              <li class="mt-3"><b>เลขที่:</b> {{details.home_number}} <b>หมู่:</b> {{details.home_group}} <b>อาคาร:</b> {{details.home_build}} <br>
+                               <b>ชั้น:</b> {{details.home_floor}}  <b>ห้อง:</b> {{details.room}}   <b>ถนน:</b> {{details.home_road}}
+                              </li>
+                              <li class="mt-3"><b>ชื่อสถานที่:</b> {{details.n_place}}</li>
+                              <li class="mt-3"><b>ละติจูด:</b> {{details.latitude}}</li>
+                              <li class="mt-3"><b>ลองจิจูด:</b> {{details.longitude}}</li>
                             </ul>
-                        </div>           -->
+                        </div>
+                          <div class="col-sm-12 col-md-12 col-lg-12 " >
+                            <ul style="list-style-type:none;">
+                              <li class="mt-4"><b>ความเป็นเจ้าของพื้นที่:</b> {{details.landlord}}</li>
+                              <li class="mt-3"><b>พื้นที่ตารางเมตร:</b> {{details.meter_area}} ตรม.</li>
+                              <li class="mt-3"><b>ความต้องการตกแต่งร้าน:</b> {{details.store_decorate}}</li>
+                              <li class="mt-3"><b>รายละเอียด:</b> {{details.store_descrip}}</li>
+                              <li class="mt-3"><b>สภาพแวดล้อมโดยรวมของสถานที่:</b> {{details.environment}}  </li>
+                              <li class="mt-3"><b>รายละเอียด:</b> {{details.environment_descrip}}  </li>
+                              <li class="mt-3"><b>ที่จอดรถ:</b> {{details.parking}}</li>
+                              <li class="mt-3"><b>เหตุผลในการสมัครทำธุรกิจ:</b> {{details.raeson_detail}}</li>
+                            </ul>
+                        </div>
+                         <div class="col-sm-12 col-md-12 col-lg-12 " >
+                            <ul style="list-style-type:none;">
+                              <li class="mt-4"><b>สถานที่โดยรอบ:</b> {{details.local_mall.mall}} - {{details.local_mall.mall_detail}} <br>
+                                {{details.local_tea.tea}} - {{details.local_tea.tea_detail}} <br>
+                                {{details.local_office.office}} - {{details.local_office.office_detail}} <br>
+                                {{details.local_accom.accom}} - {{details.local_accom.accom_detail}} <br>
+                                {{details.local_study.study}} - {{details.local_study.study_detail}} <br>
+                                {{details.local_gas.gas}} - {{details.local_gas.gas_detail}} <br>
+                                {{details.local_community.community}} - {{details.local_community.community_detail}} <br>
+                                {{details.local_other.other}} - {{details.local_other.other_detail}} <br>
+                              </li>
+                               <li class="mt-5"><small><b>รายละเอียดเพิ่มเติมสามารถติดต่อได้ที่</b></small> <br>
+                               <small><b>โทร: 0998470878 อีเมล์: anusorn.krth@gmail.com</b></small> <br>
+                               </li>
+                            </ul>
+                        </div>                      
                     </div>
                   </div>
               </div>
         
               <router-link  to="/Franchise/Detail_area" class="btn btn-danger mt-5 " ><i class="far fa-arrow-alt-circle-left"></i> กลับ </router-link>
               <button type="button"   class="btn btn-warning mt-5 ml-3">ดาวน์โหลดไฟล์ <i class="fas fa-file-download"></i></button>
-              <button type="submit" data-toggle="modal" data-target="#staticBackdrop" @click.prevent="submitConfirm" class="btn btn-success mt-5 ml-3">ยืนยัน <i class="far fa-check-circle"></i></button>
+              <button type="submit" @click.prevent="submitConfirm" class="btn btn-success mt-5 ml-3">ยืนยัน <i class="far fa-check-circle"></i></button>
 
           </div>
         </div>
 
-        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -67,18 +112,18 @@
                       </button>
                     </div>
                     <div class="modal-body ">
-                      ขอบคุณสำหรับการสมัครเฟรนไชส์ I-CHI BOBA โดยท่านจะได้รับการตอบกลับทางข้อมูลที่ท่านได้ระบุไว้
+                      ขอบคุณสำหรับการสมัครเฟรนไชส์ I-CHI BOBA โดยท่านจะได้รับการตอบกลับทางข้อมูลที่ท่านได้ระบุไว้  data-toggle="modal" data-target="#staticBackdrop"
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                       <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                     </div>
-                  </div>
+                  </div>  
                 </div>
         </div>
- 
+  -->
+        
         <!-- card --> 
-
       </div>
   </div>
 </template>
@@ -118,7 +163,7 @@ export default {
      checkPath_2(){
        var checkPath2 = localStorage.getItem("page2");
           if(checkPath2 === null){
-              window.location = "/Franchise"
+              window.location = "/"
           }else{
               console.log("Not next")
           }
@@ -128,9 +173,11 @@ export default {
        axios.post("http://localhost:3001/insert-data", this.confirmData)
       .then((response) => [console.log(response)])
        console.log("confirm", this.confirmData)
-
+      this.$alert("ขอบคุณสำหรับการสมัครเฟรนไชส์ I-CHI BOBA โดยท่านจะได้รับการตอบกลับทางข้อมูลที่ท่านได้ระบุไว้","ยื่นคำร้องสำเร็จ","success",5000);
       localStorage.removeItem('page1');
       localStorage.removeItem('page2');
+
+       
     }
   },
   
@@ -141,7 +188,7 @@ export default {
 
 <style scoped>
     
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 div {
     /* margin: 0;
     padding: 0;
