@@ -31,42 +31,52 @@
           
           <div class="card-body">
              <div class="row text-left mt-3 ml-5 ">
-              <div class="col-sm-12  col-md-8 col-lg-4 font-weight-bolder">
-                <p>สถานที่ตั้งร้าน<span>*</span></p>
+              <div class="col-sm-12  col-md-8 col-lg-4">
+                <p class=" font-weight-bolder">สถานที่ตั้งร้าน<span>*</span></p>
+                <p>เลขที่:</p>
                 <input type="text" name="home_number" id="home_number" placeholder="เลขที่"  v-model="area_details.home_number">
               </div>
               <div class="col-sm-12  col-md-8 col-lg-4  mar-top">
+                <p>หมู่:</p>
                 <input type="text" name="home_group" id="home_group" placeholder="หมู่" v-model="area_details.home_group">
               </div>
                <div class="col-sm-12  col-md-8 col-lg-4 mar-top">
+                 <p>อาคาร:</p>
                 <input type="text" name="home_build" id="home_build" placeholder="อาคาร" v-model="area_details.home_build">
               </div>
             </div>
 
             <div class="row text-left mt-3 ml-5 ">
               <div class="col-sm-12  col-md-8 col-lg-4  ">
+                <p>ชั้น:</p>
                 <input type="text" name="home_floor" id="home_floor" placeholder="ชั้น" v-model="area_details.home_floor">
               </div>
               <div class="col-sm-12  col-md-8 col-lg-4  ">
+                <p>ห้อง:</p>
                 <input type="text" name="room" id="room" placeholder="ห้อง" v-model="area_details.room">
               </div>
                <div class="col-sm-12  col-md-8 col-lg-4   ">
+                 <p>ถนน:</p>
                 <input type="text" name="home_road" id="home_road" placeholder="ถนน" v-model="area_details.home_road">
               </div>
             </div>
 
             <div class="row text-left mt-3 ml-5">
               <div class="col-sm-12  col-md-8 col-lg-4  ">
-                <input type="text" name="provinc" id="provinc" placeholder="จังหวัด" v-model="area_details.province">
+                <!-- <input type="text" name="provinc" id="provinc" placeholder="จังหวัด" v-model="area_details.province"> -->
+                <addressinput-subdistrict  placeholder="ตำบล/แขวง" v-model="area_details.sup_district" />
               </div>
               <div class="col-sm-12  col-md-8 col-lg-4  ">
-                <input type="text" name="district" id="district" placeholder="อำเภอ" v-model="area_details.district">
+                <!-- <input type="text" name="district" id="district" placeholder="อำเภอ" v-model="area_details.district"> -->
+                <addressinput-district placeholder="อำเภอ/เขต" v-model="area_details.district" />
               </div>
                <div class="col-sm-12  col-md-8 col-lg-4   ">
-                <input type="text" name="sup_district" id="sup_district" placeholder="ตำบล" v-model="area_details.sup_district">
+                <!-- <input type="text" name="sup_district" id="sup_district" placeholder="ตำบล" v-model="area_details.sup_district"> -->
+                <addressinput-province placeholder="จังหวัด" v-model="area_details.province" />
               </div>
               <div class="col-sm-12  col-md-8 col-lg-4  mt-3  mb-3">
-                <input type="text" name="zipecode" id="zipecode" placeholder="รหัสไปรษณีย์" v-model="area_details.zipecode">
+                <!-- <input type="text"  name="zipecode" id="zipecode" placeholder="รหัสไปรษณีย์" v-model="area_details.zipecode"> -->
+                <addressinput-zipcode placeholder="รหัสไปรษณีย์" v-model="area_details.zipecode" />
               </div>
             </div>
             <!-- สถานที่ตั้งร้าน --> 
@@ -184,7 +194,7 @@
             <!-- สถานที่โดยรอบมีอะไรบ้าง -->  <hr>
 
             <div class="row mt-4 ml-5 mb-5 text-left">
-              <div class="col-sm-6 ">
+              <div class="col-sm-6 col-lg-">
                 <p><b> ภาพถ่ายสถานที่ตั้งร้านจริงและภาพถ่ายสถานที่โดยรอบ</b></p>
                 <p><small>(ไฟล์นามสกุล jpg, png, pdf ขนาดไม่เกิน 5 MB)</small> </p>
                  <input type="file" id="img_store" name="img_store">
@@ -230,6 +240,7 @@
 <script>
  import "vue-select/dist/vue-select.css";
  import image from '@/assets/image/Logo_noBG.png';
+ import 'vue-thailand-address/dist/vue-thailand-address.css';
 //  import axios from 'axios';
 
 export default {

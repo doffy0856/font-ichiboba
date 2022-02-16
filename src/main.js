@@ -4,15 +4,14 @@ import router from './router'
 import store from './store'
 import vSelect from "vue-select";
 import VueSimpleAlert from "vue-simple-alert";
+import VueThailandAddress from 'vue-thailand-address';
+import 'vue-thailand-address/dist/vue-thailand-address.css';
+
 
 Vue.component("v-select", vSelect);
 Vue.use(VueSimpleAlert);
-// import {library} from '@fortawesome/fontawesome-svg-core'
-// import {fas} from '@fortawesome/free-solid-svg-icons'
-// import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+Vue.use(VueThailandAddress);
 
-// library.add(fas);
-// Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false
 

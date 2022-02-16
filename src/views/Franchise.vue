@@ -129,12 +129,12 @@
                 />
               </div>
               <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
-                <p>อีเมล:<span>*</span></p>
+                <p>อีเมล์:<span>*</span></p>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="อีเมล"
+                  placeholder="อีเมล์"
                   v-model="person_info.email" required/>
               </div>
             </div>
