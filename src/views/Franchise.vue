@@ -209,14 +209,14 @@ export default {
         fax: "",
         email: "",
         experience: '',
-        experience_detail: ""
+        experience_detail: "",
+        status: "รออนุมัติ"
         
       },
     };
   },
 
   mounted() {
-
     let newData = []
     axios.get("http://localhost:3001/person-info/all")
     .then((response) => {
@@ -249,6 +249,7 @@ export default {
         this.person_info.email = person_info.email
         this.person_info.experience = person_info.experience
         this.person_info.experience_detail = person_info.experience_detail
+        this.person_info.status = person_info.status
     }
 },
 

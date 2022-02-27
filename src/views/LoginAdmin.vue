@@ -10,17 +10,12 @@
                         <span id="reauth-email" class="reauth-email"></span>    
                         <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                         <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                        <div id="remember" class="checkbox">
-                            <label>
-                                <input type="checkbox" value="remember-me"> Remember me
-                            </label>
-                        </div>
+                        <!-- <div id="remember" class="checkbox">
+                            <label><input type="checkbox" value="remember-me"> Remember me</label>
+                        </div> -->
                     </form> 
                     <button @click="login()" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
                      <a  href="/" class="btn btn-danger mt-2"><i class="far fa-arrow-alt-circle-left"></i> กลับ </a>
-
-
-                    
                 </div>
 
           </div>

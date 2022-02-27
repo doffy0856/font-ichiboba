@@ -274,14 +274,14 @@ export default {
         parking:"", 
         raeson_detail:"",
 
-        local_mall: {mall:null , mall_detail:"" },
-        local_tea:{tea:null , tea_detail:""},
-        local_office:{office:null, office_detail:""},
-        local_accom:{accom:null, accom_detail:""},
-        local_study:{study:null,study_detail:"" },
-        local_gas:{gas:null, gas_detail:""},
-        local_community:{community:null, community_detail:""},
-        local_other:{other:null, other_detail:""},
+        local_mall: {mall:"" , mall_detail:"" },
+        local_tea:{tea:"" , tea_detail:""},
+        local_office:{office:"", office_detail:""},
+        local_accom:{accom:"", accom_detail:""},
+        local_study:{study:"",study_detail:"" },
+        local_gas:{gas:"", gas_detail:""},
+        local_community:{community:"", community_detail:""},
+        local_other:{other:"", other_detail:""},
 
         // text_local_mall:"",
         // text_local_tea:"",
@@ -392,7 +392,6 @@ export default {
         params: { data_page2: this.area_details, data_page1: this.person_data },
       });
       localStorage.setItem("page2", JSON.stringify(this.area_details));
-      window.location.reload(2000)
     }
   },
 

@@ -49,6 +49,7 @@ export default {
     // localStorage.setItem("provison", JSON.stringify(this.check_info));
     window.location.reload(2000)
     localStorage.removeItem('page1');
+    localStorage.removeItem('page2');
     // localStorage.removeItem('provison');
     }
    }, 

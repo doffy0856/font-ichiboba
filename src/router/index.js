@@ -9,6 +9,7 @@ import Check_req_status from '../views/Check_req_status.vue'
 import LoginAdmin from '../views/LoginAdmin.vue'
 
 import Admin from '../components/Admin.vue'
+import User from '../components/User.vue'
 import Detail_area from '../components/layouts/Detail_area.vue'
 import Confirm from '../components/layouts/Confirm.vue'
 
@@ -80,6 +81,14 @@ const routes = [
     path: '/Admin',
     name: 'Admin',
     component: Admin,
+    meta: {
+      header: 1
+    }
+  },
+  {
+    path: '/Admin/User',
+    name: 'User',
+    component: User,
     meta: {
       header: 1
     }

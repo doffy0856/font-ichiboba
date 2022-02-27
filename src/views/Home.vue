@@ -19,7 +19,7 @@
       </div> 
     </div>
   <hr>
-    <div class="container-fluid margin-tops">
+    <div class="container margin-tops">
        <h4>รูปภาพ</h4>
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -33,11 +33,11 @@
               <li data-target="#carouselExampleCaptions" data-slide-to="7"></li>
             </ol>
             <div class="carousel-inner" >
-              <div class="carousel-item active" >
+              <div class="carousel-item active" data-interval="3000">
                 <img src="../assets/img_home/img_1.jpg" class=" w-90" height="480px"  alt="">
               </div>
-              <div class="carousel-item"  v-for="banner in bannerList" :key="banner.src">
-                <img :src="banner.src" class=" w-90" height="480px"   alt="">
+              <div class="carousel-item"  data-interval="3000" v-for="banner in bannerList" :key="banner.src">
+                <img :src="banner.src" class="w-90" height="480px"  alt="">
               </div>
             </div>
       </div>
@@ -140,6 +140,16 @@ padding-bottom: 50px;
   i{
     font-size: 40px;
   }
+  .w-90 {
+  width: 100%;
+  min-height: 320px;
+}
+}
+@media (max-width: 576px){
+  .w-90 {
+    width: 100%;
+    height: 40px;
+}
 }
 
 
