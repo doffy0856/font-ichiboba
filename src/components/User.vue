@@ -5,7 +5,8 @@
             <div class="card-header"> รายละเอียดผู้ยื่นคำร้อง </div>
              <div class="card-body " >
                <div class="p-5">
-                     <!-- ข้อมูลส่วนตัว -->
+                    <form  @submit.prevent="sendEmail">
+                          <!-- ข้อมูลส่วนตัว -->
                           <table class="table table-sm table-borderless">
                             <tbody>
                               <tr>
@@ -126,12 +127,23 @@
                              
                             </tbody>
                         </table> 
+
+                        <div hidden>
+                            <input type="text"  v-model="info.name" name="name">
+                            <input type="text"  v-model="info.lastname" name="lastname">
+                            <input type="email"  v-model="info.email" name="email">
+                        </div>
+    
+                        <button  @click="handleReject(info.num_id)" class="btn btn-outline-danger mr-5 mt-5">Reject <i class="fa fa-ban"></i></button>
+                        <button type="submit" @click="handleApprove(info.num_id)" class="btn btn-outline-success mt-5">Appove <i class="fa fa-check"></i></button> <br>
+                        <router-link  to="/Admin" class="btn btn-primary mt-4"><i class="far fa-arrow-alt-circle-left"></i> Back </router-link>
+                    </form>
                 </div>
-                    <div>
-                        <button  @click="handleReject(info.num_id)" class="btn btn-outline-danger mr-5">Reject <i class="fa fa-ban"></i></button>
-                        <button  @click="handleApprove(info.num_id)" class="btn btn-outline-success">Appove <i class="fa fa-check"></i></button>
+                    <!-- <div>
+                        <button type="submit" @click="handleReject(info.num_id)" class="btn btn-outline-danger mr-5">Reject <i class="fa fa-ban"></i></button>
+                        <button type="submit" @click="handleApprove(info.num_id)" class="btn btn-outline-success">Appove <i class="fa fa-check"></i></button>
                     </div>
-                    <router-link  to="/Admin" class="btn btn-primary mt-5"><i class="far fa-arrow-alt-circle-left"></i> Back </router-link>
+                    <router-link  to="/Admin" class="btn btn-primary mt-5"><i class="far fa-arrow-alt-circle-left"></i> Back </router-link> -->
             </div>
         </div>
            
@@ -142,8 +154,11 @@
 <script>
 
 import axios from 'axios';
-export default {
+import emailjs from 'emailjs-com';
+
+export default { 
     name:"user",
+    
     data() {
         return {
             info:null,
@@ -156,8 +171,9 @@ export default {
         
         axios.get('http://localhost:3001/person-info/id',{params:{id:this.data_id}}).then((response) => {
         this.info = response.data.data[0]
-        // console.log("test",this.info)
+        // console.log("test",this.info.name)
     })
+    
     },
     created() {
       this.checkPathuser()
@@ -175,18 +191,59 @@ export default {
             let data = {
                 id:id
             }
-            axios.put('http://localhost:3001/admin/approve/status', data).then((response) => [console.log(response)])
-            window.location = "/Admin"
-            // console.log(id)
+            axios.put('http://localhost:3001/admin/approve/status', data).then((response) => {
+                // console.log(response)
+                if(response) {  
+                    console.log(response)
+                }
+            })
+            // window.location = "/Admin"
         },
         handleReject(id){
             let data = {
                 id:id
             }
-            axios.put('http://localhost:3001/admin/noneapprove/status', data).then((response) => [console.log(response)])
-              window.location = "/Admin"
+            axios.put('http://localhost:3001/admin/noneapprove/status', data).then((response) => {
+                console.log(response)
+                // this.$prompt(
+                //     "Input your email",
+                //     null,
+                //     "Example",
+                //     "question",
+                //     { input: "text" }).then((r) => {
+                //         this.$alert(r, "Your email is:", "success");
+                //     }).catch(() => console.log("canceled"));
+            })
+            //   window.location = "/Admin"
             // console.log(id)
         },
+        sendEmail(e) {
+            console.log("testname",this.info.name)
+             try {
+                console.log("1",this.info.status)
+                if(this.info.status == 'อนุมัติแล้ว') {
+                    emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
+                    'U7on2VpPLLp8-sBt9', {
+                    name: this.info.name,
+                    lastname: this.info.lastname,
+                    email: this.info.email,
+                })
+                }
+                else {
+                    emailjs.sendForm('service_x4kt4v3', 'template_luh2o7b', e.target,
+                    'U7on2VpPLLp8-sBt9', {
+                    name: this.info.name,
+                    lastname: this.info.lastname,
+                    email: this.info.email,
+                })
+                }
+            
+
+            }
+            catch(error) {
+                console.log("err",{error})
+            } 
+        }
     },
 }
 </script>

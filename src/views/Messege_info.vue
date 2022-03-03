@@ -1,7 +1,7 @@
 <template>
   <div id="messege-info">
-    <div class="container">
-        <form class="logo-mt">
+    <div class="container mb-5">
+        <form  @submit.prevent="sendEmail" class="logo-mt">
           <label>Name</label>
           <input 
             type="text" 
@@ -31,13 +31,39 @@
 </template>
 
 <script>
+import emailjs from 'emailjs-com';
+
 export default {
   name:"messege-info",
   data() {
     return {
-      
+      name: '',
+      email: '',
+      message: ''
     }
   },
+  methods: {
+    sendEmail(e) {
+      try {
+        console.log("test",e.target)
+        console.log("name",this.name)
+        
+        emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
+        'U7on2VpPLLp8-sBt9', {
+          name: this.name,
+          email: this.email,
+          message: this.message,
+        })
+
+      } catch(error) {
+          console.log({error})
+      }
+      // Reset form field
+      this.name = ''
+      this.email = ''
+      this.message = ''
+    },
+  }
 
 }
 </script>

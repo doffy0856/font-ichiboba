@@ -29,32 +29,6 @@
       </nav>
 
         <div class="container">
-                <!-- <table class="table table-bordered mt-5 table-scroll" >
-                    <thead class="thead-light ">
-                        <tr>
-                        <th scope="col">ลำดับ</th>
-                        <th scope="col">ปี/เดือน/วัน</th>
-                        <th scope="col">เลขบัตรประชาชน</th>
-                        <th scope="col">ชื่อ-สกุล</th>
-                        <th scope="col">เบอร์โทรศัพท์</th>
-                        <th scope="col">อีเมล</th>
-                        <th scope="col">สถานะ</th>
-                        <th scope="col">ลบข้อมูล</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(user, index) in info" :key="index">  
-                            <th scope="row">{{index+1}}</th>
-                            <td>{{user.create_date}}</td>
-                            <td @click.prevent="handleId(user.num_id)">{{user.num_id}}</td>
-                            <td>{{user.name}} {{user.lastname}}</td>
-                            <td>{{user.num_phone}}</td>
-                            <td>{{user.email}}</td>
-                            <td>pass</td>
-                            <td><i class="fas fa-trash-alt"></i></td>
-                        </tr>
-                    </tbody>
-                </table>  -->
                 <table class="table table-bordered table-sm mt-5">
                     <thead class="thead-light ">
                         <tr>

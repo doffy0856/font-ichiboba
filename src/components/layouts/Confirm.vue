@@ -157,7 +157,7 @@
         
               <router-link  to="/Franchise/Detail_area" class="btn btn-danger mt-5 " ><i class="far fa-arrow-alt-circle-left"></i> กลับ </router-link>
               <button type="button" @click="generatePdf"  class="btn btn-warning mt-5 ml-3">ดาวน์โหลดไฟล์ <i class="fas fa-file-download"></i></button>
-              <button type="submit" @click.prevent="submitConfirm" class="btn btn-success mt-5 ml-3">ยืนยัน <i class="far fa-check-circle"></i></button>
+              <button type="submit" @click.prevent="submitConfirm" class="btn btn-success mt-5 ml-3">ส่งข้อมูล <i class="far fa-check-circle"></i></button>
 
           </div>
         </div>
