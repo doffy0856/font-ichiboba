@@ -146,6 +146,12 @@
                                   <p :hidden="details.local_other.other == ''">{{details.local_other.other}} - {{details.local_other.other_detail}} </p>
                                 </td>
                               </tr>
+                              
+                              <tr>
+                                <td  class="inline-rigth"><p>ภาพบัตรประชาชน :</p></td>
+                                <td class="inline-left"><img :src="person.img_card"></td>
+                              </tr>
+
                             </tbody>
                           </table> 
 
@@ -410,6 +416,9 @@ export default {
                 pdf_width / margin_l_2, pdf_position_y, null, null, "left");
                 pdf_position_y += this.pdfConfig.typo.small
 
+        
+
+
 
                 setTimeout(() => {
                 pdf.setFont('Sarabun','normal');
@@ -477,7 +486,9 @@ p{
   text-align: left;
   padding-right: 40px;
 }
-
-
+img{
+  width: auto;
+  height: 200px;
+}
 
 </style>

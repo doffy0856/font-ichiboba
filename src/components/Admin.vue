@@ -54,7 +54,7 @@
                             <td v-if="user.status == 'อนุมัติแล้ว'" class="text-success">{{user.status}}</td>
                             <td v-if="user.status == 'ไม่อนุมัติ'" class="text-danger">{{user.status}}</td>
                            
-                            <td><i class="fas fa-trash-alt"></i></td>
+                            <td @click="deleteID(user.num_id)"><i class="fas fa-trash-alt" ></i></td>
                         </tr>
                     </tbody>
                     </table>
@@ -75,8 +75,8 @@ export default {
   data() {
       return {
           name:'',
-          info: null
-          
+          info: null,
+          txt: ''
       }
   },
 
@@ -85,6 +85,7 @@ export default {
         this.info = response.data.data
         // console.log("test get",response.data.data)
     })
+   
        
     
   },
@@ -114,7 +115,20 @@ export default {
       });
         // console.log(id)
       localStorage.setItem("userid", JSON.stringify(id));
-    }
+      },
+      deleteID(id){
+        if (confirm("ต้องการลบราบชื่อนี้?")) {
+            this.txt = "You pressed OK!";
+            axios.post('http://localhost:3001/delete-data/id', {id: id}).then((response) => {
+        // this.info = response.data.data
+            console.log("test delete",response)
+          })
+        //  console.log("success delete",id)
+        } else {
+            this.txt = "You pressed Cancel!";
+        }
+       
+        }
 
   }
 

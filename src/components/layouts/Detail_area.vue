@@ -191,15 +191,15 @@
                   <textarea name="raeson_detail" id="raeson_detail" rows="3" cols="40" v-model="area_details.raeson_detail"> </textarea>
               </div>
             </div>            
-            <!-- สถานที่โดยรอบมีอะไรบ้าง -->  <hr>
+            <!-- สถานที่โดยรอบมีอะไรบ้าง   <hr>-->
 
-            <div class="row mt-4 ml-5 mb-5 text-left">
+            <!-- <div class="row mt-4 ml-5 mb-5 text-left">
               <div class="col-sm-6 col-lg-">
                 <p><b> ภาพถ่ายสถานที่ตั้งร้านจริงและภาพถ่ายสถานที่โดยรอบ</b></p>
                 <p><small>(ไฟล์นามสกุล jpg, png, pdf ขนาดไม่เกิน 5 MB)</small> </p>
                  <input type="file" id="img_store" name="img_store">
               </div>
-            </div>
+            </div> -->
 
             
               <router-link  to="/Franchise" class="btn btn-danger mt-5 mr-3"><i class="far fa-arrow-alt-circle-left"></i> กลับ </router-link>
@@ -250,29 +250,29 @@ export default {
       image: image,
       ref_data: null,
       area_details: {
-        home_number:"",
-        home_group: "",
-        home_build:"",
-        home_floor:"",
-        room: "",
-        home_road: "",
-        province:"",
-        district:"",
-        sup_district:"",
-        zipecode:"",
+        home_number:"", //เลขที่
+        home_group: "", //หมู่
+        home_build:"", //อาคาร
+        home_floor:"", //ชั้น
+        room: "",   //ห้อง
+        home_road: "", //ถนน
+        province:"", //จังหวัด
+        district:"", //อำเภอ/เขต
+        sup_district:"", //ตำบล/แขวง
+        zipecode:"", //รหัสไปรษณีย์
 
-        n_place:"",
-        latitude:"",
-        longitude:"",
-        landlord:"",
-        meter_area:"",
-        store_decorate:"",
-        store_descrip:"",
+        n_place:"", //ชือ่สถานที่
+        latitude:"", //ละติจูด  
+        longitude:"", //ลองจิจูด
+        landlord:"", //ความเป็นเจ้าของพื้นที่
+        meter_area:"", //พื้นที่ตารางเมตร
+        store_decorate:"", //ความต้องการตกแต่งร้าน
+        store_descrip:"", //
 
-        environment:"",
-        environment_descrip:"",
-        parking:"", 
-        raeson_detail:"",
+        environment:"", // สภาพแวดล้อมโดยรวมของสถาน
+        environment_descrip:"", //
+        parking:"", //ที่จอดรถ
+        raeson_detail:"", //เหตุผลในการสมัคร
 
         local_mall: {mall:"" , mall_detail:"" },
         local_tea:{tea:"" , tea_detail:""},
@@ -301,13 +301,6 @@ export default {
     this.person_data = data_page1
     console.log("person", this.person_data);
     
-    // let new_data = {
-    //   data_1 : this.person_data,
-    //   data_2 : this.area_details
-    // };
-    // this.allData = new_data
-    // console.log(new_data)
-
     let area_details = JSON.parse(localStorage.getItem("page2"))
     if (area_details == null) {
       console.log('null')
@@ -387,12 +380,65 @@ export default {
           }
      } ,
     submitDetail() {
-       this.$router.push({
-        name: "Confirm", //use name for router push
-        params: { data_page2: this.area_details, data_page1: this.person_data },
-      });
-      localStorage.setItem("page2", JSON.stringify(this.area_details));
-    }
+      if (this.area_details.home_number === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        // localStorage.removeItem("page2");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.home_group === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+       if (this.area_details.province === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.n_place === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.latitude === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.longitude === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.landlord === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.meter_area === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.store_decorate === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.environment === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.parking === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      if (this.area_details.raeson_detail === "") {
+        this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+        window.location = "/Franchise/Detail_area";
+      }
+      else{
+          this.$router.push({
+          name: "Confirm", //use name for router push
+          params: { data_page2: this.area_details, data_page1: this.person_data },
+        });
+        localStorage.setItem("page2", JSON.stringify(this.area_details));
+      }
+      }
+
+     
   },
 
   

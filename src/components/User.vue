@@ -4,11 +4,11 @@
             <div class="card mt-5 mb-5">
             <div class="card-header"> รายละเอียดผู้ยื่นคำร้อง </div>
              <div class="card-body " >
-               <div class="p-5">
+               <div class="p-5" >
                     <form  @submit.prevent="sendEmail">
                           <!-- ข้อมูลส่วนตัว -->
-                          <table class="table table-sm table-borderless">
-                            <tbody>
+                          <table class="table table-sm table-bordered" >
+                            <tbody >
                               <tr>
                                 <td class="inline-rigth"><p>วันที่ยื่นคำร้อง :</p></td>
                                 <td class="inline-left"><p>{{info.create_date}}</p></td>
@@ -21,6 +21,7 @@
                                 <td  class="inline-rigth"><p>เลขบัตรประชาชน :</p></td>
                                 <td class="inline-left"><p>{{info.num_id}}</p></td>
                               </tr>
+                        
                               <tr>
                                 <td  class="inline-rigth"><p>เบอร์มือถือ :</p></td>
                                 <td class="inline-left"><p>{{info.num_phone}}</p></td>
@@ -48,8 +49,8 @@
                               
                                <!-- สถานที่ตั้งร้าน -->
                              <tr>
-                                <td  class="inline-rigth pt-5"><p>สถานที่ตั้งร้าน :</p></td>
-                                <td class="inline-left pt-5"><p>{{info.home_number}}/{{info.home_group}}</p>  
+                                <td  class="inline-rigth pt-3"><p>สถานที่ตั้งร้าน :</p></td>
+                                <td class="inline-left pt-3"><p>{{info.home_number}}/{{info.home_group}}</p>  
                                     <p :hidden="info.home_road == '-'">{{info.home_build}} {{info.home_floor}} {{info.home_road}}</p>
                                     <p>{{info.sup_district}}</p>
                                     <p>{{info.district}}</p>
@@ -87,7 +88,7 @@
                                 <td class="inline-left"><p>{{info.store_descrip}}</p></td>
                               </tr>
                               <tr>
-                                <td  class="inline-rigth"><p>สภาพแวดล้อมโดยรวมของสถานที่ :</p></td>
+                                <td  class="inline-rigth"><p>สภาพแวดล้อมโดยรวม:</p></td>
                                 <td class="inline-left"><p>{{info.environment}}</p></td>
                               </tr>
                               <tr :hidden="info.environment_descrip === ''">
@@ -124,6 +125,12 @@
                                       {{JSON.parse(info.local_other).other}} - {{JSON.parse(info.local_other).other_detail}} </p>
                                 </td>
                               </tr>
+
+                              <tr>
+                                <td  class="inline-rigth"><p>ภาพบัตรประชาชน :</p></td>
+                                <td class="inline-left"><img :src="info.img_card"></td>
+                              </tr>
+                    
                              
                             </tbody>
                         </table> 
@@ -139,11 +146,7 @@
                         <router-link  to="/Admin" class="btn btn-primary mt-4"><i class="far fa-arrow-alt-circle-left"></i> Back </router-link>
                     </form>
                 </div>
-                    <!-- <div>
-                        <button type="submit" @click="handleReject(info.num_id)" class="btn btn-outline-danger mr-5">Reject <i class="fa fa-ban"></i></button>
-                        <button type="submit" @click="handleApprove(info.num_id)" class="btn btn-outline-success">Appove <i class="fa fa-check"></i></button>
-                    </div>
-                    <router-link  to="/Admin" class="btn btn-primary mt-5"><i class="far fa-arrow-alt-circle-left"></i> Back </router-link> -->
+                  
             </div>
         </div>
            
@@ -192,10 +195,7 @@ export default {
                 id:id
             }
             axios.put('http://localhost:3001/admin/approve/status', data).then((response) => {
-                // console.log(response)
-                if(response) {  
-                    console.log(response)
-                }
+                console.log(response)
             })
             // window.location = "/Admin"
         },
@@ -204,24 +204,18 @@ export default {
                 id:id
             }
             axios.put('http://localhost:3001/admin/noneapprove/status', data).then((response) => {
-                console.log(response)
-                // this.$prompt(
-                //     "Input your email",
-                //     null,
-                //     "Example",
-                //     "question",
-                //     { input: "text" }).then((r) => {
-                //         this.$alert(r, "Your email is:", "success");
-                //     }).catch(() => console.log("canceled"));
+                // console.log(response)
+                if(response) {  
+                    console.log(response)
+                }
             })
             //   window.location = "/Admin"
-            // console.log(id)
         },
-        sendEmail(e) {
-            console.log("testname",this.info.name)
+        sendEmail(e) { //ยังติดอยู่ ------------------
+            // console.log("testname",this.info.name)
              try {
                 console.log("1",this.info.status)
-                if(this.info.status == 'อนุมัติแล้ว') {
+                if(this.info.status == 'รออนุมัติ') { //อนุมัติ
                     emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
                     'U7on2VpPLLp8-sBt9', {
                     name: this.info.name,
@@ -229,7 +223,7 @@ export default {
                     email: this.info.email,
                 })
                 }
-                else {
+                if(this.info.status == 'รออนุมัติ') { //ไม่อนุมัติ
                     emailjs.sendForm('service_x4kt4v3', 'template_luh2o7b', e.target,
                     'U7on2VpPLLp8-sBt9', {
                     name: this.info.name,
@@ -237,8 +231,6 @@ export default {
                     email: this.info.email,
                 })
                 }
-            
-
             }
             catch(error) {
                 console.log("err",{error})
@@ -269,6 +261,10 @@ p{
 }
 .inline-left{
   text-align: left;
-  padding-right: 40px;
+  padding-left: 20px;
+}
+img{
+  width: auto;
+  height: 200px;
 }
 </style>
