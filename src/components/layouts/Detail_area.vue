@@ -282,17 +282,6 @@ export default {
         local_gas:{gas:"", gas_detail:""},
         local_community:{community:"", community_detail:""},
         local_other:{other:"", other_detail:""},
-
-        // text_local_mall:"",
-        // text_local_tea:"",
-        // text_local_office:"",
-        // text_local_accom:"",
-        // text_local_study:"",
-        // text_local_gas:"",
-        // text_local_community:"",
-        // text_local_other:"",
-       
-
       }
     }
   },

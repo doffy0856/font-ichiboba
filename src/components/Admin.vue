@@ -13,7 +13,7 @@
                         <a class="nav-link" href="/Admin">รายชื่อทั้งหมด <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ml-4 active">
-                        <a class="nav-link" href="#">อัปเดตข่าวสาร</a>
+                        <a class="nav-link" href="/AdminPost">อัปเดตข่าวสาร</a>
                     </li>
                     <li class="nav-item dropdown ml-4 active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,13 +57,9 @@
                             <td @click="deleteID(user.num_id)"><i class="fas fa-trash-alt" ></i></td>
                         </tr>
                     </tbody>
-                    </table>
+                </table>
         </div>
-        
-
   </div>
-
-    
 </template>
 
 <script>
@@ -85,9 +81,6 @@ export default {
         this.info = response.data.data
         // console.log("test get",response.data.data)
     })
-   
-       
-    
   },
 
   created() {
@@ -128,7 +121,7 @@ export default {
             this.txt = "You pressed Cancel!";
         }
        
-        }
+      }
 
   }
 

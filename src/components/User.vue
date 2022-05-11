@@ -211,11 +211,11 @@ export default {
             })
             //   window.location = "/Admin"
         },
-        sendEmail(e) { //ยังติดอยู่ ------------------
+        sendEmail(e) { 
             // console.log("testname",this.info.name)
              try {
                 console.log("1",this.info.status)
-                if(this.info.status == 'รออนุมัติ') { //อนุมัติ
+                if(this.info.status == 'รออนุมัติ') { //ส่งเมล
                     emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
                     'U7on2VpPLLp8-sBt9', {
                     name: this.info.name,
@@ -223,14 +223,7 @@ export default {
                     email: this.info.email,
                 })
                 }
-                if(this.info.status == 'รออนุมัติ') { //ไม่อนุมัติ
-                    emailjs.sendForm('service_x4kt4v3', 'template_luh2o7b', e.target,
-                    'U7on2VpPLLp8-sBt9', {
-                    name: this.info.name,
-                    lastname: this.info.lastname,
-                    email: this.info.email,
-                })
-                }
+
             }
             catch(error) {
                 console.log("err",{error})

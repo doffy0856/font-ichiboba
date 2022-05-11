@@ -100,11 +100,9 @@
                 <p>
                   <small>(ไฟล์นามสกุล jpg, png, pdf ขนาดไม่เกิน 5 MB)</small>
                 </p>
-                <img
-                  class="profile-image"
+                <img class="profile-image"
                   :src="person_info.img_card"
-                  :hidden="person_info.img_card == ''"
-                />
+                  :hidden="person_info.img_card == ''" />
                 <div v-if="!person_info.img_card">
                   <input
                     ref="file"
@@ -119,10 +117,7 @@
                   <button
                     class="btn btn-danger btn-sm mt-4"
                     icon="delete"
-                    @click="removeImage"
-                  >
-                    Delete
-                  </button>
+                    @click="removeImage">Delete</button>
                 </div>
               </div>
             </div>
