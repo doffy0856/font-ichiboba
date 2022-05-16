@@ -2,7 +2,7 @@
   <div id="adminpost">
         <nav class="navbar navbar-expand-lg  navbar-light bg-warning p-4">
           <div class="container-fluid">
-                <a class="navbar-brand" href="#">ICHI-BOBA</a>
+                <a class="navbar-brand" href="/Admin">ICHI-BOBA</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body mt-4">
                     <p class="mb-4"><b>เพิ่่มรูปภาพ</b></p>
-                    <img class="post-image"
+                    <img class="image-size"
                     :src="Addpost.image_post"
                     :hidden="Addpost.image_post == ''" />
                     <div v-if="!Addpost.image_post">
@@ -66,7 +66,10 @@
                     <div class="card-body" >
                         <ul style="list-style-type:none;">
                         <li>
-                            <p><b>โพสต์เมื่อวันที่:</b> {{item.date_post}}  <i class="fas fa-trash-alt" @click="deletePost(item.post_id)"></i></p> 
+                            <p><b>โพสต์เมื่อวันที่:</b> {{item.date_post}}  
+                             <i class="fas fa-trash-alt mr-3" @click="deletePost(item.post_id)"></i>
+                             <!-- <i class="far fa-edit" @click="editPost(item.post_id)"></i> -->
+                            </p> 
                             <img :src="item.image_post" class="image-size mb-5">
                             <p class="text-left"><b>รายละเอียด</b> <br> &nbsp; &nbsp;
                              {{item.detail_post}}</p>
@@ -174,13 +177,20 @@ export default {
             axios.post('http://localhost:3001/delete/post-data', {post_id: post_id}).then((response) => {
         // this.info = response.data.data
             console.log("test delete",response)
-             window.location = "/AdminPost"
+              
             })
             } else {
                 this.txt = "You pressed Cancel!";
             }
-           
+           window.location = "/AdminPost"
         },
+        // editPost(post_id){
+        //      axios.post('http://localhost:3001/edit-post', {post_id: post_id}).then((response) => {
+        // // this.info = response.data.data
+        //     console.log("test edit",response)
+        //     })
+        // },
+
     },
 }
 </script>
@@ -197,11 +207,18 @@ div {
     font-size: 20px;
 }
 
-.fa-trash-alt{
+.fa-trash-alt {
     cursor: pointer;
 }
 .fa-trash-alt:hover{
     color: red;
+    font-size: 20px;
+}
+.fa-edit {
+    cursor: pointer;
+}
+.fa-edit:hover{
+    color: rgb(198, 198, 17);
     font-size: 20px;
 }
 .image-size{
