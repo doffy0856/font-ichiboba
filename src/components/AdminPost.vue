@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="mt-5">
-                        <textarea name="detail_post" id="detail_post" cols="50" rows="5"   v-model="Addpost.detail_post" placeholder="รายละเอียดเพิ่มเติม" required></textarea>
+                        <textarea name="detail_post" id="detail_post" cols="50" rows="5"  v-model="Addpost.detail_post" placeholder="รายละเอียดเพิ่มเติม" required></textarea>
                     </div>
                   <button type="submit" @click.prevent="submitAddpost"  class="btn btn-primary btn-sm mt-5">เพิ่มข่าวสาร <i class="fa fa-plus"></i></button>
                 </div>
@@ -68,7 +68,7 @@
                         <li>
                             <p><b>โพสต์เมื่อวันที่:</b> {{item.date_post}}  
                              <i class="fas fa-trash-alt mr-3" @click="deletePost(item.post_id)"></i>
-                             <!-- <i class="far fa-edit" @click="editPost(item.post_id)"></i> -->
+                             <i class="far fa-edit" @click="handPostID(item.post_id)"></i>
                             </p> 
                             <img :src="item.image_post" class="image-size mb-5">
                             <p class="text-left"><b>รายละเอียด</b> <br> &nbsp; &nbsp;
@@ -76,9 +76,11 @@
                         </li>
                         </ul>
                     </div>
+                    
                 </div>
             </div>
         </div>
+         
   </div>
 </template>
 
@@ -95,7 +97,8 @@ export default {
                 detail_post: ""
             },
             imageUrl:null,
-            getPost:null
+            getPost:null,
+            
         }
     },
     mounted() {
@@ -164,15 +167,22 @@ export default {
         this.Addpost.image_post = "";
         },
         submitAddpost(){
-            axios.post("http://localhost:3001/insert/post", this.confirmPost)
-            .then((response) => [console.log(response)])
-            console.log("test", this.confirmPost)
+            if(this.Addpost.image_post == "" && this.Addpost.detail_post == "") {
+                this.$alert(null, "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+            }
+            else{
+                axios.post("http://localhost:3001/insert/post", this.confirmPost)
+                .then((response) => [console.log(response)])
+                console.log("test", this.confirmPost)
 
-            window.location = "/AdminPost"
+                window.location = "/AdminPost"
+            }
+            
 
         },
         deletePost(post_id){
             if (confirm("ต้องการลบโพสต์นี้?")) {
+            window.location = "/AdminPost"
             this.txt = "You pressed OK!";
             axios.post('http://localhost:3001/delete/post-data', {post_id: post_id}).then((response) => {
         // this.info = response.data.data
@@ -182,14 +192,16 @@ export default {
             } else {
                 this.txt = "You pressed Cancel!";
             }
-           window.location = "/AdminPost"
         },
-        // editPost(post_id){
-        //      axios.post('http://localhost:3001/edit-post', {post_id: post_id}).then((response) => {
-        // // this.info = response.data.data
-        //     console.log("test edit",response)
-        //     })
-        // },
+        handPostID(post_id) {
+            this.$router.push({
+                name: "Editpost", //use name for router push
+                params: { postId: post_id },
+            });
+                // console.log(id)
+            localStorage.setItem("postid", JSON.stringify(post_id));
+        },
+      
 
     },
 }
@@ -205,6 +217,9 @@ div {
 }
 .nav-link:hover{
     font-size: 20px;
+}
+.text-left{
+    font-size: 16px;
 }
 
 .fa-trash-alt {
@@ -222,22 +237,28 @@ div {
     font-size: 20px;
 }
 .image-size{
-  width: 450px;
+  width: 350px;
   height: auto;
 }
 
 @media (max-width:991px){
  .image-size{
-    width: 350px;
+    width: 250px;
     height: auto;
   }
+  .text-left{
+    font-size: 15px;
+}
 }
 
 @media (max-width:768px){
  .image-size{
-    width: 250px;
+    width: 180px;
     height: auto;
   }
+  .text-left{
+    font-size: 14px;
+}
 }
 
 </style>

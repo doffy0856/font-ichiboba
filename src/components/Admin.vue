@@ -110,13 +110,11 @@ export default {
       localStorage.setItem("userid", JSON.stringify(id));
       },
       deleteID(id){
-        if (confirm("ต้องการลบราบชื่อนี้?")) {
+        if (confirm("ต้องการลบราบชื่อนี้หรือไม่ ?")) {
             this.txt = "You pressed OK!";
             axios.post('http://localhost:3001/delete-data/id', {id: id}).then((response) => {
-        // this.info = response.data.data
             console.log("test delete",response)
           })
-        //  console.log("success delete",id)
         } else {
             this.txt = "You pressed Cancel!";
         }

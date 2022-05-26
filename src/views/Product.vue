@@ -37,7 +37,7 @@
 
      <div class="p-5">
         <div class="card ">
-          <div class="card-header">Specail Menu <i class="fas fa-cocktail"></i></div>
+          <div class="card-header">Special Menu <i class="fas fa-cocktail"></i></div>
           <div class="row m-4" >
               <div class="col-sm-6 text-left" >
                 <ul style="list-style-type:none;">
@@ -152,13 +152,8 @@ export default {
     }
   },
   methods: {
-    //  clickedDownload(){
-    //   var fileName='http://localhost:8080/Product';
-    //   window.open(fileName, 'Download');
-    // }
     toggleImage: function () {
-            this.showImage = !this.showImage;
-            
+            this.showImage = !this.showImage; 
         },
   },
 

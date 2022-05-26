@@ -8,6 +8,7 @@ import Franchise from '../views/Franchise.vue'
 import Check_req_status from '../views/Check_req_status.vue'
 import LoginAdmin from '../views/LoginAdmin.vue'
 import AdminPost from '../components/AdminPost.vue'
+import Editpost from '../components/Editpost.vue'
 
 import Admin from '../components/Admin.vue'
 import User from '../components/User.vue'
@@ -98,6 +99,14 @@ const routes = [
     path: '/AdminPost',
     name: 'AdminPost',
     component: AdminPost,
+    meta: {
+      header: 1
+    }
+  },
+  {
+    path: '/AdminPost/editpost',
+    name: 'Editpost',
+    component: Editpost,
     meta: {
       header: 1
     }

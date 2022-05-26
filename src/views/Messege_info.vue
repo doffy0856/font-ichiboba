@@ -41,8 +41,6 @@ export default {
   mounted(){  
     axios.get('http://localhost:3001/post-admin').then((response) => {
         this.getPostdata = response.data.data
-        // console.log("test get",response.data.data[0])
-        //  console.log("test get",this.getPostdata)
     })
   },
 

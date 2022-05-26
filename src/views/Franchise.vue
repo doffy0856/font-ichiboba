@@ -263,10 +263,8 @@ export default {
         let res = response.data;
         if (response.data) {
           res.data.forEach((element) => {
-            // console.log('res', element.num_id)
             newData.push(element.num_id);
           });
-          //   console.log('reponae',response.data[i])
         }
       });
     this.numID = newData;

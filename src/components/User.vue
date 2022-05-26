@@ -170,11 +170,9 @@ export default {
     mounted() {
         let numID = JSON.parse(localStorage.getItem("userid"))
          this.data_id = numID
-        // console.log("xxx",this.data_id)
         
         axios.get('http://localhost:3001/person-info/id',{params:{id:this.data_id}}).then((response) => {
         this.info = response.data.data[0]
-        // console.log("test",this.info.name)
     })
     
     },
@@ -197,7 +195,7 @@ export default {
             axios.put('http://localhost:3001/admin/approve/status', data).then((response) => {
                 console.log(response)
             })
-            // window.location = "/Admin"
+            window.location = "/Admin"
         },
         handleReject(id){
             let data = {
@@ -209,20 +207,18 @@ export default {
                     console.log(response)
                 }
             })
-            //   window.location = "/Admin"
+              window.location = "/Admin"
         },
         sendEmail(e) { 
-            // console.log("testname",this.info.name)
              try {
-                console.log("1",this.info.status)
-                if(this.info.status == 'รออนุมัติ') { //ส่งเมล
+                // if(this.info.status == 'รออนุมัติ') { //ส่งเมล
                     emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
                     'U7on2VpPLLp8-sBt9', {
                     name: this.info.name,
                     lastname: this.info.lastname,
                     email: this.info.email,
                 })
-                }
+                // }
 
             }
             catch(error) {
