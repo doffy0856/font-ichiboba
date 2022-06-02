@@ -176,7 +176,6 @@
  import "vue-select/dist/vue-select.css";
  import axios from 'axios';
  import jsPDF from 'jspdf';
-//  import html2canvas from 'html2canvas';
 
 export default {
   name:'Confirm',
@@ -484,7 +483,7 @@ p{
 }
 .inline-left{
   text-align: left;
-  padding-right: 40px;
+  padding-right: 0px;
 }
 img{
   width: auto;
