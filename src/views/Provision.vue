@@ -50,7 +50,6 @@ export default {
     window.location.reload(2000)
     localStorage.removeItem('page1');
     localStorage.removeItem('page2');
-    // localStorage.removeItem('provison');
     }
    }, 
 

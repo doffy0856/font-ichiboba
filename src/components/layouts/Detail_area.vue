@@ -360,7 +360,7 @@ export default {
   },
 
   methods: {
-       checkPath(){
+      checkPath(){
        var checkPath1 = localStorage.getItem("page1");
           if(checkPath1 === null){
               window.location = "/"

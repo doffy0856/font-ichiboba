@@ -32,7 +32,7 @@ import axios from 'axios';
 
 
 export default {
-  name: "messege-info",
+  name: "post-info",
   data() {
     return {
       getPostdata: null,
