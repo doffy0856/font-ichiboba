@@ -11,7 +11,7 @@
             <input class="search-id" v-model="check_num" type="search" maxlength="13" name="search-id" id="search-id" placeholder="กรอกเลขที่อ้างอิง">
 
             <div class="mt-5">
-                <button type="button" @click="checkId" class="btn btn-primary btn-md">ตรวจสอบ <i class="fas fa-search"></i></button>
+                <button type="button" @click="checkId" class="btn btn-primary btn-md mb-5">ตรวจสอบ <i class="fas fa-search"></i></button>
             </div>
         </div>       
 
@@ -71,7 +71,7 @@ div {
     font-family: 'Roboto Mono', monospace;
 }
 .logo-mt {
-  margin-top: 120px;
+  margin-top: 140px;
   margin-bottom: 30px;
 }
 .nav-link {

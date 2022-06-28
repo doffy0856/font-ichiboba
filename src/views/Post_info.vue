@@ -57,12 +57,12 @@ div {
   margin-bottom: 30px;
 }
 .image-size{
-  width: 450px;
+  width: 350px;
   height: auto;
 }
 @media (max-width:991px){
  .image-size{
-    width: 350px;
+    width: 300px;
     height: auto;
   }
 }

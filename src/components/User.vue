@@ -73,7 +73,7 @@
                               <!-- ความเป็นเจ้าของพื้นที่ -->
                               <tr>
                                 <td class="inline-rigth"><p>ความเป็นเจ้าของพื้นที่ :</p></td>
-                                <td class="inline-left"><p>{{info.landload}}</p></td>
+                                <td class="inline-left"><p>{{info.landlord}}</p></td>
                               </tr>
                               <tr>
                                 <td class="inline-rigth"><p>พื้นที่ตารางเมตร :</p></td>
@@ -188,43 +188,53 @@ export default {
                 this.name = email
             }
         },
-        handleApprove(id){
-            let data = {
-                id:id
-            }
-            axios.put('http://localhost:3001/admin/approve/status', data).then((response) => {
-                console.log(response)
-            })
-            window.location = "/Admin"
-        },
-        handleReject(id){
-            let data = {
-                id:id
-            }
-            axios.put('http://localhost:3001/admin/noneapprove/status', data).then((response) => {
-                // console.log(response)
-                if(response) {  
-                    console.log(response)
-                }
-            })
-              window.location = "/Admin"
-        },
         sendEmail(e) { 
              try {
-                // if(this.info.status == 'รออนุมัติ') { //ส่งเมล
+                if(this.info.status == 'รออนุมัติ') { //ส่งเมล
                     emailjs.sendForm('service_x4kt4v3', 'template_15mziaa', e.target,
                     'U7on2VpPLLp8-sBt9', {
                     name: this.info.name,
                     lastname: this.info.lastname,
                     email: this.info.email,
                 })
-                // }
+              }
 
             }
             catch(error) {
                 console.log("err",{error})
             } 
+        },
+        handleApprove(id){
+            let data = {
+                id:id
+            }
+            if (confirm("ต้องการอนุมัติรายชื่อนี้ใช่หรือไม่ ?")) {
+            this.txt = "You pressed OK!";
+            axios.put('http://localhost:3001/admin/approve/status', data).then((response) => {
+                console.log(response)
+            })
+            } else {
+            this.txt = "You pressed Cancel!";
+          }
+            window.location = "/Admin"
+        },
+        handleReject(id){
+            let data = {
+                id:id
+            }
+             if (confirm("ไม่อนุมัติรายชื่อนี้ใช่หรือไม่ ?")) {
+            this.txt = "You pressed OK!";
+            axios.put('http://localhost:3001/admin/noneapprove/status', data).then((response) => {
+                // console.log(response)
+                if(response) {  
+                    console.log(response)
+                }
+            })
+        } else {
+            this.txt = "You pressed Cancel!";
         }
+            window.location = "/Admin"
+        },
     },
 }
 </script>
